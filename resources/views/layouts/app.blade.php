@@ -8,17 +8,7 @@
 
   <body>
     <div class="container">
-      <nav class="navbar navbar-default">
-        <ul class="nav navbar-nav">
-            <div class="navbar-brand">
-                Tasks
-            </div>
-            
-            <li class="active"><a href="#">Главная</a></li>
-            <li><a href="/tasks">Задачи</a></li>
-             
-        </ul>
-      </nav>
+      
     </div>
 
     @yield('content')
