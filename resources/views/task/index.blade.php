@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
 <div class="row">
-    <div class="col-md-6 col-md-push-6">
+    <div class="col-sm-6 col-sm-push-6">
     <div class="panel panel-default">
         <div class="panel-heading">
             Добавить задачу
@@ -27,11 +27,21 @@
         </form>
         
         </div>
+
+        @if (count($errors)>0)
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
     </div>
     </div> 
 
 
-    <div class="col-md-6 col-md-pull-6">
+    <div class="col-sm-6 col-sm-pull-6">
     <div class="panel panel-default">
         <div class="panel-heading">
             Список задач
@@ -39,8 +49,8 @@
 
         <div class="panel-body">
         <ul>
+        
         @foreach($tasks as $task)
-             
             <li>                     
                 <p><b>Заголовок:</b> {{ $task->title }}<br />
                 <b>Описание:</b> {{ $task->desc }}<br />
@@ -48,16 +58,17 @@
                 </p>
            
            <div class="row">
-           <div class="col-md-6">
+           <div class="col-sm-6">
                 <form action="/task/{{ $task->id }}" method="GET" class="form-inline">
                     {{ csrf_field() }}                   
                     <button class="btn btn-warning">Редактировать</button>
                 </form>    
             </div>
-            <div class="col-md-6">    
+            <div class="col-sm-6">    
                 <form action="/task/{{ $task->id }}" method="POST" class="form-inline">
                     {{ csrf_field() }}
                     {{ method_field('DELETE') }}
+                    
                     <button class="btn btn-danger">Удалить</button>
                 </form>    
              </div>

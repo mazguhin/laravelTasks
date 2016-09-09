@@ -1,7 +1,9 @@
 <?php
 
-Route::get ('/', 'TaskController@index');
-Route::post ('/task', 'TaskController@add');
-Route::get ('/task/{id}', 'TaskController@editView');
-Route::put ('/task/{id}', 'TaskController@edit');
-Route::delete ('/task/{id}', 'TaskController@delete');
+Route::get ('/', 'TaskController@index')->middleware('auth');
+Route::post ('/task', 'TaskController@add')->middleware('auth');
+Route::get ('/task/{task}', 'TaskController@editView')->middleware('auth');
+Route::put ('/task/{task}', 'TaskController@edit')->middleware('auth');
+Route::delete ('/task/{task}', 'TaskController@delete')->middleware('auth');
+Auth::routes();
+
