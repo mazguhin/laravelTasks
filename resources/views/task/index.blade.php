@@ -60,8 +60,9 @@
             <li>                     
                 <p><b>Заголовок:</b> {{ $task->title }}<br />
                 <b>Описание:</b> {{ $task->desc }}<br />
-                <b>Создано:</b> {{ $task->created_at->format('m/d/Y') }}<br />
-                @if (count($task->tags)>0)
+                <b>Создано:</b> {{ $task->created_at->format('d/m/Y') }}<br />
+                
+                @if ($task->tags[0]->name!="")
                     <b>Теги:</b>
                     @foreach ($task->tags as $tag)
                         @if (!$loop->first) |
