@@ -22,6 +22,12 @@
                 <input type="text" class="form-control" placeholder="Введите описание" id="desc" name="desc">
             </div>
 
+            <div class="form-group">
+                <label for="tags">Теги</label>
+                <input type="text" class="form-control" placeholder="Введите теги" id="tags" name="tags">
+                <p class="help-block">Разделяйте теги пробелами</p>
+            </div>
+
             <button type="submit" class="btn btn-success form-control">Отправить</button>
 
         </form>
@@ -55,7 +61,15 @@
                 <p><b>Заголовок:</b> {{ $task->title }}<br />
                 <b>Описание:</b> {{ $task->desc }}<br />
                 <b>Создано:</b> {{ $task->created_at->format('m/d/Y') }}<br />
-                </p>
+                @if (count($task->tags)>0)
+                    <b>Теги:</b>
+                    @foreach ($task->tags as $tag)
+                        @if (!$loop->first) |
+                        @endif
+                        {{ $tag->name }}
+                    @endforeach
+                @endif
+                </p><br />
            
            <div class="row">
            <div class="col-sm-6">

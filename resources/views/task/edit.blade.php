@@ -24,6 +24,23 @@
                             <input value="{{ $task->desc }}" type="text" class="form-control" placceholder="Введите описание" id="desc" name="desc">
                         </div>
 
+                        <div class="form-group">
+                            <label for="tags">Теги</label>
+                           
+                            <input value="<?php
+                            $arrayLen=count($task->tags);
+                            $counter=0;
+                            foreach($task->tags as $tag) 
+                                {
+                                    if (++$counter == $arrayLen)
+                                        echo $tag->name;
+                                    else
+                                        echo $tag->name." ";
+                                } 
+                            ?>" type="text" class="form-control" placeholder="Введите теги" id="tags" name="tags">
+                            <p class="help-block">Разделяйте теги пробелами</p>
+                        </div>
+
                         <button class="btn btn-success col-sm-4 col-sm-offset-1" type="submit">Отправить</button>
                         <a class="btn btn-danger col-sm-4 col-sm-offset-2" href="/">Отмена</a>
                     </form>
