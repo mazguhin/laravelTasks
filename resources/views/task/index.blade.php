@@ -1,15 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<main class="container">
 <div class="row">
     <div class="col-sm-6 col-sm-push-6">
-    <div class="panel panel-default">
-        <div class="panel-heading">
+    <section class="panel panel-default">
+        <header class="panel-heading">
             Добавить задачу
-        </div>
+        </header>
 
-        <div class="panel-body">
+        <article class="panel-body">
         <form action="/task" method="post">
             {{ csrf_field() }}
             <div class="form-group">
@@ -31,8 +31,7 @@
             <button type="submit" class="btn btn-success form-control">Отправить</button>
 
         </form>
-        
-        </div>
+        </article>
 
         @if (count($errors)>0)
         <div class="alert alert-danger">
@@ -43,17 +42,17 @@
             </ul>
         </div>
         @endif
-    </div>
+    </section>
     </div> 
 
 
     <div class="col-sm-6 col-sm-pull-6">
-    <div class="panel panel-default">
-        <div class="panel-heading">
+    <section class="panel panel-default">
+        <header class="panel-heading">
             Список задач
-        </div>
+        </header>
 
-        <div class="panel-body">
+        <article class="panel-body">
         <ul>
         
         @foreach($tasks as $task)
@@ -96,14 +95,14 @@
         
         @endforeach
         </ul>
-        </div>  
+        </article>  
         {!! $tasks->render() !!}  
-    </div>
+    </section>
     </div>
 
     
 
 </div>
-</div>
+</main>
 
 @endsection

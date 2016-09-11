@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="container">
+<main class="container">
 
 @if (count($errors)>0)
 <div class="row">
@@ -20,12 +20,12 @@
 
 <div class="row">
     <div class="col-sm-12">
-    <div class="panel panel-default">
-        <div class="panel-heading">
+    <section class="panel panel-default">
+        <header class="panel-heading">
             Список тегов
-        </div>
+        </header>
 
-        <div class="panel-body">
+        <article class="panel-body">
             <table class="table table-hover">
                 <thead>
                     <tr>
@@ -53,10 +53,10 @@
                 </tbody>
             </table>
             {!! $tags->render() !!}
-        </div>
-    </div>
+        </article>
+    </section>
     </div>
 </div>
-</div>
+</main>
 
 @endsection
