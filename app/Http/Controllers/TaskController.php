@@ -64,15 +64,18 @@ class TaskController extends Controller
         Auth::user()->tasks()->save($task);
         $task->tags()->detach();
         $tags = explode(" ",trim(strtolower($request->tags)));
-        foreach($tags as $tag)
+        if ($tags[0]!=" ")
         {
+            foreach($tags as $tag)
+            {
+                
+                $thisTag = Tag::where('name',$tag)->get();
             
-            $thisTag = Tag::where('name',$tag)->get();
-           
-            if(count($thisTag)===0)
-                $task->tags()->save(Tag::create(['name'=>$tag]));
-            else 
-                $task->tags()->save($thisTag[0]);
+                if(count($thisTag)===0)
+                    $task->tags()->save(Tag::create(['name'=>$tag]));
+                else 
+                    $task->tags()->save($thisTag[0]);
+            }
         }
 
         return redirect('/');
