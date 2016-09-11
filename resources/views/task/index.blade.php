@@ -13,35 +13,40 @@
         <form action="/task" method="post">
             {{ csrf_field() }}
             <div class="form-group">
-                <label for="title">Заголовок</label>
-                <input type="text" class="form-control" placeholder="Введите заголовок" id="title" name="title">
+                <label for="title">Заголовок *</label>
+                <input type="text" class="form-control" placeholder="Введите заголовок" value="{{ old('title') }}" id="title" name="title">
+                @if($errors->has('title'))
+                    <span class="help-block">
+                        {{ $errors->first('title') }}
+                    </span>
+                @endif
             </div>
 
             <div class="form-group">
-                <label for="desc">Описание</label>
-                <input type="text" class="form-control" placeholder="Введите описание" id="desc" name="desc">
+                <label for="desc">Описание *</label>
+                <input type="text" class="form-control" placeholder="Введите описание" value="{{ old('desc') }}" id="desc" name="desc">
+                @if($errors->has('desc'))
+                    <span class="help-block">
+                        {{ $errors->first('desc') }}
+                    </span>
+                @endif
             </div>
 
             <div class="form-group">
                 <label for="tags">Теги</label>
-                <input type="text" class="form-control" placeholder="Введите теги" id="tags" name="tags">
+                <input type="text" class="form-control" placeholder="Введите теги" value="{{ old('tags') }}" id="tags" name="tags">
                 <p class="help-block">Разделяйте теги пробелами</p>
+                @if($errors->has('tags'))
+                    <span class="help-block">
+                        {{ $errors->first('tags') }}
+                    </span>
+                @endif
             </div>
 
             <button type="submit" class="btn btn-success form-control">Отправить</button>
 
         </form>
         </article>
-
-        @if (count($errors)>0)
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-        @endif
     </section>
     </div> 
 

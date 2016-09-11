@@ -8,5 +8,8 @@ Route::delete ('/task/{task}', 'TaskController@delete')->middleware('auth');
 
 Route::get('/tag','TagController@index')->middleware('auth');
 Route::delete('/tag/{tag}','TagController@delete')->middleware('auth');
+
+Route::get('/profile','ProfileController@index')->middleware('auth');
+
 Auth::routes();
 

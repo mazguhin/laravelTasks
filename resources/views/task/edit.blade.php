@@ -16,12 +16,22 @@
                     {{ method_field('PUT') }}
                         <div class="form-group">
                             <label for="title">Заголовок</label>
-                            <input value="{{ $task->title }}" type="text" class="form-control" placceholder="Введите заголовок" id="title" name="title">
+                            <input value="{{ $task->title }}" type="text" class="form-control" value="{{ old('title') }}" placceholder="Введите заголовок" id="title" name="title">
+                            @if($errors->has('title'))
+                            <span class="help-block">
+                                {{ $errors->first('title') }}
+                            </span>
+                            @endif
                         </div>
 
                         <div class="form-group">
                             <label for="desc">Описание</label>
-                            <input value="{{ $task->desc }}" type="text" class="form-control" placceholder="Введите описание" id="desc" name="desc">
+                            <input value="{{ $task->desc }}" type="text" class="form-control" value="{{ old('desc') }}" placceholder="Введите описание" id="desc" name="desc">
+                            @if($errors->has('desc'))
+                                <span class="help-block">
+                                    {{ $errors->first('desc') }}
+                                </span>
+                            @endif
                         </div>
 
                         <div class="form-group">
@@ -37,8 +47,13 @@
                                     else
                                         echo $tag->name." ";
                                 } 
-                            ?>" type="text" class="form-control" placeholder="Введите теги" id="tags" name="tags">
+                            ?>" type="text" class="form-control" value="{{ old('tags') }}" placeholder="Введите теги" id="tags" name="tags">
                             <p class="help-block">Разделяйте теги пробелами</p>
+                            @if($errors->has('tags'))
+                                <span class="help-block">
+                                    {{ $errors->first('tags') }}
+                                </span>
+                            @endif
                         </div>
 
                         <button class="btn btn-success col-sm-4 col-sm-offset-1" type="submit">Отправить</button>
